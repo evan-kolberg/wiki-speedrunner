@@ -5,28 +5,22 @@ import subprocess
 from multiprocessing import Process
 
 app = Flask(__name__)
-
 nlp = spacy.load('en_core_web_md')
 
 def compare(target_phrase, phrases):
     similarities = [nlp(target_phrase).similarity(nlp(phrase)) for phrase in phrases]
-    
     most_similar_phrase_index = np.argmax(similarities)
     
     return phrases[most_similar_phrase_index]
 
 @app.route('/compare', methods=['POST'])
 def compare_phrases():
-    try:
-        data = request.get_json()
-        target_phrase = data['target_phrase']
-        phrases = data['phrases']
-        
-        most_similar_phrase = compare(target_phrase, phrases)
-        
-        return {'most_similar_phrase': most_similar_phrase}
-    except Exception as e:
-        return {'error': str(e)}, 500
+    data = request.get_json()
+    target_phrase = data['target_phrase']
+    phrases = data['phrases']
+    most_similar_phrase = compare(target_phrase, phrases)
+    
+    return {'most_similar_phrase': most_similar_phrase}
 
 def run_server():
     app.run(port=5000)

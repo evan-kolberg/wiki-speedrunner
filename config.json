@@ -1,5 +1,5 @@
 {
-    "target": "chinese communist party",
-    "starting": "https://en.wikipedia.org/wiki/OpenAI",
-    "destination": "https://en.wikipedia.org/wiki/Chinese_Communist_Party"
+    "target": "electric bicycle",
+    "starting": "https://en.wikipedia.org/wiki/Special:Random",
+    "destination": "https://en.wikipedia.org/wiki/Electric_bicycle"
 }
